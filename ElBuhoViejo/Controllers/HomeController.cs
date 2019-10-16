@@ -15,7 +15,7 @@ namespace ElBuhoViejo.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Acerca de Nosotros.";
+            ViewBag.Message = "Acerca de Nosotross.";
 
             return View();
         }
