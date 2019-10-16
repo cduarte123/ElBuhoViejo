@@ -22,7 +22,7 @@ namespace ElBuhoViejo.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Pagina de Contacto";
+            ViewBag.Message = "Contacto";
 
             return View();
         }
