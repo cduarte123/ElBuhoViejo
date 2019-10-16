@@ -7,6 +7,7 @@
       <Diagram DiagramId="f7fe94f49e3e45acb2a17ad3daf61257" Name="Diagram1">
         <EntityTypeShape EntityType="BibliotecaVirtualModel.Autor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaVirtualModel.Libro" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.Contacto" Width="1.5" PointX="5" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

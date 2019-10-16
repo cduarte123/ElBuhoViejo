@@ -27,5 +27,6 @@ namespace ElBuhoViejo.Models
     
         public virtual DbSet<Autor> Autor { get; set; }
         public virtual DbSet<Libro> Libro { get; set; }
+        public virtual DbSet<Contacto> Contacto { get; set; }
     }
 }
