@@ -26,5 +26,12 @@ namespace ElBuhoViejo.Controllers
 
             return View();
         }
+
+        public ActionResult Nosotros()
+        {
+            ViewBag.Message = "Nosotros";
+
+            return View();
+        }
     }
 }
