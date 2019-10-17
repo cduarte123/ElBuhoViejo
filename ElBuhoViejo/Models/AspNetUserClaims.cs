@@ -12,11 +12,13 @@ namespace ElBuhoViejo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Contacto
+    public partial class AspNetUserClaims
     {
-        public int idContacto { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public string Consulta { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

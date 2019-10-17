@@ -12,11 +12,18 @@ namespace ElBuhoViejo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Contacto
+    public partial class AspNetRoles
     {
-        public int idContacto { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public string Consulta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AspNetRoles()
+        {
+            this.AspNetUsers = new HashSet<AspNetUsers>();
+        }
+    
+        public string Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

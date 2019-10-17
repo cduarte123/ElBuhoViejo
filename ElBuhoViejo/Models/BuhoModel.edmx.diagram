@@ -7,7 +7,15 @@
       <Diagram DiagramId="f7fe94f49e3e45acb2a17ad3daf61257" Name="Diagram1">
         <EntityTypeShape EntityType="BibliotecaVirtualModel.Autor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BibliotecaVirtualModel.Libro" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BibliotecaVirtualModel.Contacto" Width="1.5" PointX="5" PointY="1.75" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.AspNetUsers" Width="1.5" PointX="3" PointY="5.375" />
+        <AssociationConnector Association="BibliotecaVirtualModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BibliotecaVirtualModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BibliotecaVirtualModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="BibliotecaVirtualModel.Contacto" Width="1.5" PointX="6.125" PointY="3.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
