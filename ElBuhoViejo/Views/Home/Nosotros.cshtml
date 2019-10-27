@@ -2,53 +2,62 @@
 @{
     ViewBag.Title = "Nosotros";
 }
-<link href="~/Estilos/MisEstilos.css" rel="stylesheet" type="text/css" />
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <div class="row">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
 
-        
-        <div class="col-md-3" >
-
-            <div align="left">
-                <zoom><img src="https://scontent.fasu3-1.fna.fbcdn.net/v/t1.0-9/71375560_2239248289533982_7341958370141667328_n.jpg?_nc_cat=101&_nc_oc=AQlM7-Cbd1AE1KI-iPlafCuhY2cfu6aUYv-X6iPVsgC8w2HUWZ2B_CqNMQjgvKIqstY&_nc_ht=scontent.fasu3-1.fna&oh=39839afc8d0fcd72a1f28daa46da407a&oe=5E5AFA59" alt="Leidy" width="100%"></zoom>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="https://miro.medium.com/max/1000/1*BIJ5kkEkHkzraLDBSQD5_w.jpeg" class="img-thumbnail" alt="Leidy">
+                <div class="carousel-caption">
+                    <h3>Leidy Rivas</h3>
+                    <p>Actualmente me desempeño como alumna de la Universidad Autónoma de Asunción en la Facultad de Ciencias y Tecnología cursando la carrera de Ingeniería en Informática con énfasis en Sistemas Informáticos. Me considero una persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo. Mi mayor satisfacción es lograr las metas y objetivos presentes en mi carrera y las de la universidad.</p>
+                </div>
             </div>
-            <h4>Leidy Rivas</h4>
-            <p>
-                Actualmente me desempeño como alumna de la Universidad Autónoma de Asunción en la Facultad de Ciencias y Tecnología cursando la carrera de Ingeniería en Informática con énfasis en Sistemas Informáticos. Me considero una persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo. Mi mayor satisfacción es lograr las metas y objetivos presentes en mi carrera y las de la universidad.
-            </p>
-        </div>
-    <div class="col-md-3">
-        <div align="left">
-            <img src="https://scontent.fasu3-1.fna.fbcdn.net/v/t1.0-9/19247912_1756538044362429_1703246575471270526_n.jpg?_nc_cat=106&_nc_oc=AQmvar6k0vBTWAfKncg5Ic3zh0H_bNVs5FcC_VakRzyIF2pZfKG9fbViA7N0ap1AzoM&_nc_ht=scontent.fasu3-1.fna&oh=da3d22fc1047214300975fac337fe3f0&oe=5E5CB759" alt="Victor" width="100%">
-        </div>
-        <h4>Victor Benitez</h4>
-        <p>
-            Soy de Asunción Barrio Hipodromo y termine el Colegio en Pablo L. Ávila en Bachillerato Técnico e Informática.
 
-            Actualmente sigo la Carrera de Ingenieria en Informática enfasis Ciencias de la Computación.
-        </p>
-       
-    </div>
-    <div class="col-md-3">
-        <div align="left">
-            <img src="https://scontent.fasu3-1.fna.fbcdn.net/v/t1.0-9/25353784_1600202740046611_4024183520794358912_n.jpg?_nc_cat=102&_nc_oc=AQlsaUBdQN0kCjgOis2CiihIF3NM4Ecw9dkQBHlJTwSKeo654au3KStvFfr5401uNnY&_nc_ht=scontent.fasu3-1.fna&oh=f8c21b4d2a0ff1ddeecb2d5e6d9a4516&oe=5E211357" alt="Cristhian" width="100%">
+            <div class="item">
+                <img src="https://miro.medium.com/max/1000/1*BIJ5kkEkHkzraLDBSQD5_w.jpeg" class="img-thumbnail" alt="Victor">
+                <div class="carousel-caption">
+                    <h3>Victor Benitez</h3>
+                    <p>Actualmente me desempeño como alumna de la Universidad Autónoma de Asunción en la Facultad de Ciencias y Tecnología cursando la carrera de Ingeniería en Informática con énfasis en Sistemas Informáticos. Me considero una persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo. Mi mayor satisfacción es lograr las metas y objetivos presentes en mi carrera y las de la universidad.</p>
+                </div>           
+            </div>
+
+            <div class="item">
+                <img src="https://miro.medium.com/max/1000/1*BIJ5kkEkHkzraLDBSQD5_w.jpeg" class="img-thumbnail" alt="Cristhian">
+                <div class="carousel-caption">
+                    <h3>Cristhian Duarte</h3>
+                    <p>Actualmente me desempeño como alumna de la Universidad Autónoma de Asunción en la Facultad de Ciencias y Tecnología cursando la carrera de Ingeniería en Informática con énfasis en Sistemas Informáticos. Me considero una persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo. Mi mayor satisfacción es lograr las metas y objetivos presentes en mi carrera y las de la universidad.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://miro.medium.com/max/1000/1*BIJ5kkEkHkzraLDBSQD5_w.jpeg" class="img-thumbnail" alt="Nery">
+                <div class="carousel-caption">
+                    <h3>Nery Cano</h3>
+                    <p>Actualmente me desempeño como alumna de la Universidad Autónoma de Asunción en la Facultad de Ciencias y Tecnología cursando la carrera de Ingeniería en Informática con énfasis en Sistemas Informáticos. Me considero una persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo. Mi mayor satisfacción es lograr las metas y objetivos presentes en mi carrera y las de la universidad.</p>
+                </div>
+            </div>
         </div>
-        <h4>Cristhian Duarte</h4>
-        <p>
-            Me llamo Cristhian Duarte, tengo 18 años, nací en la cuidad de Asunción el 08 de junio de 1997, barrio San Pablo. Tengo 2 hermanos uno mayor y uno menor que yo. Me gusta jugar ajedrez porque es un deporte que te ayuda a desarrollar la creatividad tal como lo requiere esta carrera. Decidí realizar mis estudios universitario con esta carrera porque me gusta mucho y además hoy en día todo trabajo es a base de una computadora.
-        </p>
-        
-    </div>
-    <div class="col-md-3">
-        <div align="left">
-            <img src="https://scontent.fasu3-1.fna.fbcdn.net/v/t1.0-9/51036543_2046971755368624_8444093514265919488_n.jpg?_nc_cat=106&_nc_oc=AQk2GvfXTdToN0Vw5CJT8BJvBLfKJZ7iIuzPhX7uQVwp_B_RDl2wPs8vIsuObjgFyY0&_nc_ht=scontent.fasu3-1.fna&oh=a847856b206243f99c587cbf6c099ac6&oe=5E5FAD57" alt="Leidy" width="100%">
-        </div>
-        <h4>Nery Cano</h4>
-        <p>
-            Mi nombre es Nery Cano estoy en la carrera de ingenieria en informatica, me gusta hacer deporte, soy de Lambare, Egrese del colegio Nihon Gakko en la promocion 2015. gmail: nalbertoc132@gmail.com
-        </p>
-        
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </div>
