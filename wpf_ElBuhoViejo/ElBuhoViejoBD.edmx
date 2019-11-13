@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BibliotecaVirtualModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="idAutor" />
+          </Key>
+          <Property Name="idAutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Nac" Type="nchar" MaxLength="10" />
+          <Property Name="idNacionalidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BibliotecaVirtual.dbo.Contacto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="idContacto" />
+          </Key>
+          <Property Name="idContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Celular" Type="varchar" MaxLength="50" />
+          <Property Name="Consulta" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Libro">
+          <Key>
+            <PropertyRef Name="IdLibro" />
+          </Key>
+          <Property Name="IdLibro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" />
+          <Property Name="Cantidad_Pag" Type="int" />
+          <Property Name="Anho_Publicacion" Type="date" />
+          <Property Name="Sinopsis" Type="varchar" MaxLength="200" />
+          <Property Name="idAutor" Type="int" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="idNacionalidad" />
+          </Key>
+          <Property Name="idNacionalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Autor_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
+          <End Role="Autor" Type="Self.Autor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="idNacionalidad" />
+            </Principal>
+            <Dependent Role="Autor">
+              <PropertyRef Name="idNacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="idAutor" />
+            </Principal>
+            <Dependent Role="Libro">
+              <PropertyRef Name="idAutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BibliotecaVirtualModelStoreContainer">
+          <EntitySet Name="Autor" EntityType="Self.Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Libro" EntityType="Self.Libro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nacionalidad" EntityType="Self.Nacionalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Contacto].[idContacto] AS [idContacto], 
+    [Contacto].[Nombre] AS [Nombre], 
+    [Contacto].[Email] AS [Email], 
+    [Contacto].[Celular] AS [Celular], 
+    [Contacto].[Consulta] AS [Consulta]
+    FROM [dbo].[Contacto] AS [Contacto]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Autor_Nacionalidad" Association="Self.FK_Autor_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Autor" EntitySet="Autor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Autor" Association="Self.FK_Libro_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Libro" EntitySet="Libro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BibliotecaVirtualModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="idAutor" />
+          </Key>
+          <Property Name="idAutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nac" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idNacionalidad" Type="Int32" />
+          <NavigationProperty Name="Nacionalidad" Relationship="Self.FK_Autor_Nacionalidad" FromRole="Autor" ToRole="Nacionalidad" />
+          <NavigationProperty Name="Libro" Relationship="Self.FK_Libro_Autor" FromRole="Autor" ToRole="Libro" />
+        </EntityType>
+        <EntityType Name="Libro">
+          <Key>
+            <PropertyRef Name="IdLibro" />
+          </Key>
+          <Property Name="IdLibro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad_Pag" Type="Int32" />
+          <Property Name="Anho_Publicacion" Type="DateTime" Precision="0" />
+          <Property Name="Sinopsis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idAutor" Type="Int32" />
+          <NavigationProperty Name="Autor" Relationship="Self.FK_Libro_Autor" FromRole="Libro" ToRole="Autor" />
+        </EntityType>
+        <EntityType Name="Nacionalidad">
+          <Key>
+            <PropertyRef Name="idNacionalidad" />
+          </Key>
+          <Property Name="idNacionalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Autor" Relationship="Self.FK_Autor_Nacionalidad" FromRole="Nacionalidad" ToRole="Autor" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="idContacto" />
+          </Key>
+          <Property Name="idContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Consulta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Autor_Nacionalidad">
+          <End Role="Nacionalidad" Type="Self.Nacionalidad" Multiplicity="0..1" />
+          <End Role="Autor" Type="Self.Autor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacionalidad">
+              <PropertyRef Name="idNacionalidad" />
+            </Principal>
+            <Dependent Role="Autor">
+              <PropertyRef Name="idNacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="idAutor" />
+            </Principal>
+            <Dependent Role="Libro">
+              <PropertyRef Name="idAutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BibliotecaVirtualEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autor" EntityType="Self.Autor" />
+          <EntitySet Name="Libro" EntityType="Self.Libro" />
+          <EntitySet Name="Nacionalidad" EntityType="Self.Nacionalidad" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" />
+          <AssociationSet Name="FK_Autor_Nacionalidad" Association="Self.FK_Autor_Nacionalidad">
+            <End Role="Nacionalidad" EntitySet="Nacionalidad" />
+            <End Role="Autor" EntitySet="Autor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Autor" Association="Self.FK_Libro_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Libro" EntitySet="Libro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BibliotecaVirtualModelStoreContainer" CdmEntityContainer="BibliotecaVirtualEntities">
+          <EntitySetMapping Name="Autor">
+            <EntityTypeMapping TypeName="BibliotecaVirtualModel.Autor">
+              <MappingFragment StoreEntitySet="Autor">
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Fecha_Nac" ColumnName="Fecha_Nac" />
+                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Libro">
+            <EntityTypeMapping TypeName="BibliotecaVirtualModel.Libro">
+              <MappingFragment StoreEntitySet="Libro">
+                <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Cantidad_Pag" ColumnName="Cantidad_Pag" />
+                <ScalarProperty Name="Anho_Publicacion" ColumnName="Anho_Publicacion" />
+                <ScalarProperty Name="Sinopsis" ColumnName="Sinopsis" />
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nacionalidad">
+            <EntityTypeMapping TypeName="BibliotecaVirtualModel.Nacionalidad">
+              <MappingFragment StoreEntitySet="Nacionalidad">
+                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="BibliotecaVirtualModel.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="idContacto" ColumnName="idContacto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Consulta" ColumnName="Consulta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
