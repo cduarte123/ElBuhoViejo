@@ -100,7 +100,8 @@ namespace wpf_ElBuhoViejo
 
         private void BtnLimpiar_Click(object sender, RoutedEventArgs e)
         {
-            txtId.Text = txtDescripcion.Text = string.Empty;
+            txtId.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
         }
 
 
